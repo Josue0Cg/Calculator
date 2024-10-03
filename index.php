@@ -79,10 +79,6 @@
                 <button type="button" onclick="appendNumber('9')">9</button>
                 <button type="button" onclick="setOperation('divide')">÷</button>
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 1e36c2839d4635b68d949427be8cd1201c90c2cf
                 <button type="button" onclick="appendNumber('4')">4</button>
                 <button type="button" onclick="appendNumber('5')">5</button>
                 <button type="button" onclick="appendNumber('6')">6</button>
@@ -140,13 +136,5 @@
             operation.value = '';
         }
     </script>
-<<<<<<< HEAD
-
-
-    <!-- ArmV17 -->
-    <!-- isapana -->
-
-=======
->>>>>>> 1e36c2839d4635b68d949427be8cd1201c90c2cf
 </body>
 </html>
