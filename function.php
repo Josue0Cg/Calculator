@@ -1,11 +1,14 @@
 <?php
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Obtener los números y la operación del formulario
-    $num1 = $_POST['num1'];
-    $num2 = $_POST['num2'];
-    $operation = $_POST['operation'];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Obtener los valores de los inputs
+    $num1 = isset($_POST['num1']) ? floatval($_POST['num1']) : 0;
+    $num2 = isset($_POST['num2']) ? floatval($_POST['num2']) : 0;
+    $operation = isset($_POST['operation']) ? $_POST['operation'] : '';
 
-    // Realizar la operación según la opción seleccionada
+    // Variable para almacenar el resultado
+    $result = 0;
+
+    // Realizar la operación
     switch ($operation) {
         case 'sum':
             $result = $num1 + $num2;
@@ -17,19 +20,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $result = $num1 * $num2;
             break;
         case 'divide':
-            if ($num2 == 0) {
-                $result = 'Error: No se puede dividir por cero';
-            } else {
+            if ($num2 != 0) {
                 $result = $num1 / $num2;
+            } else {
+                $result = "Error: División por cero";
             }
             break;
         default:
-            $result = 'Operación inválida';
-            break;
+            $result = "Operación no válida";
     }
 
-    // Redirigir de vuelta a index.html con el resultado
-    header("Location: index.html?result=" . urlencode($result));
+    // Redirigir de vuelta a la página principal con el resultado
+    header("Location: index.php?result=" . urlencode($result));
+    exit();
+} else {
+    // Redirigir de vuelta si no es un POST
+    header("Location: index.php");
     exit();
 }
-?>
