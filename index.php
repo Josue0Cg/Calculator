@@ -69,72 +69,74 @@
   
 </head>
 <body>
-    <div class="calculator">
-        <h1>Calculadora</h1>
-        <form action="function.php" method="POST">
-            <input type="text" name="display" id="display" readonly>
-            <div class="buttons">
-                <button type="button" onclick="appendNumber('7')">7</button>
-                <button type="button" onclick="appendNumber('8')">8</button>
-                <button type="button" onclick="appendNumber('9')">9</button>
-                <button type="button" onclick="setOperation('divide')">÷</button>
+<div class="calculator">
+    <h1>Calculadora</h1>
+    <form action="function.php" method="POST" onsubmit="calculateResult(event)">
+        <input type="text" name="display" id="display" readonly>
+        <div class="buttons">
+            <button type="button" onclick="appendNumber('7')">7</button>
+            <button type="button" onclick="appendNumber('8')">8</button>
+            <button type="button" onclick="appendNumber('9')">9</button>
+            <button type="button" onclick="appendOperation('/')">÷</button> <!-- Modificado a '/' para evaluaciones matemáticas -->
 
-                <button type="button" onclick="appendNumber('4')">4</button>
-                <button type="button" onclick="appendNumber('5')">5</button>
-                <button type="button" onclick="appendNumber('6')">6</button>
-                <button type="button" onclick="setOperation('multiply')">x</button>
+            <button type="button" onclick="appendNumber('4')">4</button>
+            <button type="button" onclick="appendNumber('5')">5</button>
+            <button type="button" onclick="appendNumber('6')">6</button>
+            <button type="button" onclick="appendOperation('*')">x</button> <!-- Modificado a '*' para evaluaciones matemáticas -->
 
-                <button type="button" onclick="appendNumber('1')">1</button>
-                <button type="button" onclick="appendNumber('2')">2</button>
-                <button type="button" onclick="appendNumber('3')">3</button>
-                <button type="button" onclick="setOperation('subtract')">-</button>
+            <button type="button" onclick="appendNumber('1')">1</button>
+            <button type="button" onclick="appendNumber('2')">2</button>
+            <button type="button" onclick="appendNumber('3')">3</button>
+            <button type="button" onclick="appendOperation('-')">-</button>
 
-                <button type="button" onclick="appendNumber('0')">0</button>
-                <button type="button" onclick="clearDisplay()">C</button>
-                <button type="button" onclick="setOperation('sum')">+</button>
-                <button type="submit" class="equal">=</button>
-            </div>
+            <button type="button" onclick="appendNumber('0')">0</button>
+            <button type="button" onclick="appendNumber('.')">.</button> <!-- Punto decimal -->
+            <button type="button" onclick="appendOperation('+')">+</button>
+            <button type="submit" class="equal">=</button>
 
-            <input type="hidden" name="num1" id="num1">
-            <input type="hidden" name="num2" id="num2">
-            <input type="hidden" name="operation" id="operation">
-        </form>
+            <button type="button" onclick="appendNumber('(')">(</button> <!-- Paréntesis izquierdo -->
+            <button type="button" onclick="appendNumber(')')">)</button> <!-- Paréntesis derecho -->
+            <button type="button" onclick="clearDisplay()">C</button> <!-- Limpiar -->
+        </div>
 
-        <?php
-        if (isset($_GET['result'])) {
-            echo "<h2>Resultado: " . htmlspecialchars($_GET['result']) . "</h2>";
-        }
-        ?>
-    </div>
+        <input type="hidden" name="expression" id="expression">
+    </form>
+</div>
 
 <script>
-        let display = document.getElementById('display');
-        let num1 = document.getElementById('num1');
-        let num2 = document.getElementById('num2');
-        let operation = document.getElementById('operation');
-        let operatorClicked = false;
+    let display = document.getElementById('display');
+    let expression = document.getElementById('expression');
 
-        function appendNumber(number) {
-            if (operatorClicked) {
-                display.value = number;
-                operatorClicked = false;
-            } else {
-                display.value += number;
-            }
-        }
+    // Añadir número o símbolo al display
+    function appendNumber(value) {
+        display.value += value;
+        expression.value = display.value; // Actualiza la expresión oculta
+    }
 
-        function setOperation(op) {
-            num1.value = display.value;
-            operation.value = op;
-            operatorClicked = true;
-        }
+    // Añadir operación (suma, resta, multiplicación, división)
+    function appendOperation(op) {
+        display.value += ` ${op} `;
+        expression.value = display.value; // Actualiza la expresión oculta
+    }
 
-        function clearDisplay() {
-            display.value = '';
-            num1.value = '';
-            num2.value = '';
-            operation.value = '';
+    // Limpiar el display y las variables
+    function clearDisplay() {
+        display.value = '';
+        expression.value = '';
+    }
+
+    // Calcular el resultado de la expresión
+    function calculateResult(event) {
+        event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
+        try {
+            // Evalúa la expresión matemática introducida por el usuario
+            let result = eval(expression.value.replace('x', '*').replace('÷', '/'));
+            display.value = result; // Muestra el resultado en el display
+            expression.value = result; // Actualiza la expresión oculta con el resultado
+        } catch (error) {
+            display.value = "Error";
         }
-    </script>
+    }
+</script>
 </body>
 </html>
