@@ -79,7 +79,7 @@
                 <button type="button" onclick="appendNumber('9')">9</button>
                 <button type="button" onclick="setOperation('divide')">/</button>
 
-<<<<<<< HEAD
+
                 <button type="button" onclick="appendNumber('4')">4</button>
                 <button type="button" onclick="appendNumber('5')">5</button>
                 <button type="button" onclick="appendNumber('6')">6</button>
@@ -108,7 +108,7 @@
         ?>
     </div>
 
-    <script>
+<script>
         let display = document.getElementById('display');
         let num1 = document.getElementById('num1');
         let num2 = document.getElementById('num2');
@@ -137,15 +137,10 @@
             operation.value = '';
         }
     </script>
-=======
-    <?php
-    // Mostrar el resultado, si está disponible
-    if (isset($_GET['result'])) {
-        echo "<h2>Resultado: " . htmlspecialchars($_GET['result']) . "</h2>";
-    }
-    ?>
+
+
     <!-- ArmV17 -->
     <!-- isapana -->
->>>>>>> 68c49c3b52aa853a698d72064e9d900d8a2462cf
+
 </body>
 </html>
