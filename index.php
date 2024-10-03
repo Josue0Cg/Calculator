@@ -6,67 +6,24 @@
     <title>Calculadora - Curso AD</title>
 </head>
 <body>
+    <h1>Calculadora</h1>
+    <form action="function.php" method="POST">
+        <input type="number" name="num1" placeholder="Número 1" required>
+        <select name="operation">
+            <option value="sum">Sumar</option>
+            <option value="subtract">Restar</option>
+            <option value="multiply">Multiplicar</option>
+            <option value="divide">Dividir</option>
+        </select>
+        <input type="number" name="num2" placeholder="Número 2" required>
+        <button type="submit">Calcular</button>
+    </form>
 
-    <div class="calculator">
-        <div id="display">0</div>
-        <div class="buttons">
-            <button class="clear" onclick="clearDisplay()">C</button>
-            <button onclick="appendToDisplay('/')">/</button>
-            <button onclick="appendToDisplay('*')">*</button>
-            <button onclick="backspace()">←</button>
-
-            <button onclick="appendToDisplay('7')">7</button>
-            <button onclick="appendToDisplay('8')">8</button>
-            <button onclick="appendToDisplay('9')">9</button>
-            <button class="operator" onclick="appendToDisplay('-')">-</button>
-
-            <button onclick="appendToDisplay('4')">4</button>
-            <button onclick="appendToDisplay('5')">5</button>
-            <button onclick="appendToDisplay('6')">6</button>
-            <button class="operator" onclick="appendToDisplay('+')">+</button>
-
-            <button onclick="appendToDisplay('1')">1</button>
-            <button onclick="appendToDisplay('2')">2</button>
-            <button onclick="appendToDisplay('3')">3</button>
-            <button class="equals" onclick="calculate()">=</button>
-
-            <button onclick="appendToDisplay('0')">0</button>
-            <button onclick="appendToDisplay('.')">.</button>
-        </div>
-    </div>
-
-    <script>
-        function appendToDisplay(value) {
-            const display = document.getElementById('display');
-            if (display.innerText === '0' || display.innerText === 'Error') {
-                display.innerText = value;
-            } else {
-                display.innerText += value;
-            }
-        }
-
-        function clearDisplay() {
-            document.getElementById('display').innerText = '0';
-        }
-
-        function backspace() {
-            const display = document.getElementById('display');
-            if (display.innerText.length === 1 || display.innerText === 'Error') {
-                display.innerText = '0';
-            } else {
-                display.innerText = display.innerText.slice(0, -1);
-            }
-        }
-
-        function calculate() {
-            const display = document.getElementById('display');
-            try {
-                display.innerText = eval(display.innerText);
-            } catch (e) {
-                display.innerText = 'Error';
-            }
-        }
-    </script>
-
+    <?php
+    // Mostrar el resultado, si está disponible
+    if (isset($_GET['result'])) {
+        echo "<h2>Resultado: " . htmlspecialchars($_GET['result']) . "</h2>";
+    }
+    ?>
 </body>
 </html>
