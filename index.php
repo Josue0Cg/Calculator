@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora - Curso AD</title>
-</head>
+</head> 
 <body>
     <h1>Calculadora</h1>
     <form action="function.php" method="POST">
@@ -25,5 +25,6 @@
         echo "<h2>Resultado: " . htmlspecialchars($_GET['result']) . "</h2>";
     }
     ?>
+    <!-- isapana -->
 </body>
 </html>
