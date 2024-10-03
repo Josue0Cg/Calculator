@@ -37,10 +37,17 @@
             <button type="button" onclick="appendNumber('(')">(</button> <!-- Paréntesis izquierdo -->
             <button type="button" onclick="appendNumber(')')">)</button> <!-- Paréntesis derecho -->
             <button type="button" onclick="clearDisplay()">C</button> <!-- Limpiar -->
+            <button type="button" onclick="deleteLastCharacter()">⌫</button> <!-- Borrar último carácter -->
         </div>
 
         <input type="hidden" name="expression" id="expression">
     </form>
+
+    <?php
+    if (isset($_GET['result'])) {
+        echo "<h2>Resultado: " . htmlspecialchars($_GET['result']) . "</h2>";
+    }
+    ?>
 </div>
 
 <script>
@@ -65,6 +72,13 @@
         expression.value = '';
     }
 
+    // Borrar el último carácter del display
+    function deleteLastCharacter() {
+        // Elimina el último carácter de la cadena del display
+        display.value = display.value.slice(0, -1);
+        expression.value = display.value; // Actualiza la expresión oculta
+    }
+
     // Calcular el resultado de la expresión
     function calculateResult(event) {
         event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
@@ -78,5 +92,3 @@
         }
     }
 </script>
-</body>
-</html>
