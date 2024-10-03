@@ -5,7 +5,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $operation = isset($_POST['operation']) ? $_POST['operation'] : '';
 
     $result = 0;
-
     switch ($operation) {
         case 'sum':
             $result = $num1 + $num2;
