@@ -15,13 +15,12 @@
                 <button type="button" onclick="appendNumber('7')">7</button>
                 <button type="button" onclick="appendNumber('8')">8</button>
                 <button type="button" onclick="appendNumber('9')">9</button>
-                <button type="button" onclick="setOperation('divide')">/</button>
+                <button type="button" onclick="setOperation('divide')">÷</button>
 
-<<<<<<< HEAD
                 <button type="button" onclick="appendNumber('4')">4</button>
                 <button type="button" onclick="appendNumber('5')">5</button>
                 <button type="button" onclick="appendNumber('6')">6</button>
-                <button type="button" onclick="setOperation('multiply')">*</button>
+                <button type="button" onclick="setOperation('multiply')">x</button>
 
                 <button type="button" onclick="appendNumber('1')">1</button>
                 <button type="button" onclick="appendNumber('2')">2</button>
@@ -75,15 +74,5 @@
             operation.value = '';
         }
     </script>
-=======
-    <?php
-    // Mostrar el resultado, si está disponible
-    if (isset($_GET['result'])) {
-        echo "<h2>Resultado: " . htmlspecialchars($_GET['result']) . "</h2>";
-    }
-    ?>
-    <!-- ArmV17 -->
-    <!-- isapana -->
->>>>>>> 68c49c3b52aa853a698d72064e9d900d8a2462cf
 </body>
 </html>
