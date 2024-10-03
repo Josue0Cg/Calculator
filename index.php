@@ -3,72 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f4f4f4;
-        }
-
-        .calculator {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        #display {
-            width: 100%;
-            height: 50px;
-            margin-bottom: 20px;
-            background-color: #222;
-            color: #fff;
-            text-align: right;
-            padding: 10px;
-            font-size: 1.5rem;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-
-        .buttons {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-        }
-
-        button {
-            padding: 20px;
-            font-size: 1.2rem;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            background-color: #e0e0e0;
-            transition: background-color 0.2s ease;
-        }
-
-        button:active {
-            background-color: #ccc;
-        }
-
-        .operator {
-            background-color: #ffa726;
-            color: white;
-        }
-
-        .equals {
-            background-color: #66bb6a;
-            color: white;
-        }
-
-        .clear {
-            background-color: #ef5350;
-            color: white;
-        }
-    </style>
+    <title>Calculadora - Curso AD</title>
 </head>
 <body>
 
