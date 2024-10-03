@@ -34,8 +34,7 @@
             <button type="button" onclick="appendOperation('+')">+</button>
             <button type="submit" class="equal">=</button>
 
-            <button type="button" onclick="appendNumber('(')">(</button> 
-            <button type="button" onclick="appendNumber(')')">)</button> 
+       
             <button type="button" onclick="clearDisplay()">C</button> 
             <button type="button" onclick="deleteLastCharacter()">⌫</button> 
         </div>
